@@ -1,12 +1,12 @@
 {
-  "APP_DISPLAY_NAME": "ModRealms Launcher",
+  "APP_DISPLAY_NAME": "Mystical Machines Launcher",
 
-  "WELCOME_HEADER_TEXT": "Welcome to ModRealms!",
+  "WELCOME_HEADER_TEXT": "Welcome to Mystical Machines!",
   "WELCOME_DESC_TEXT": "N/A",
   "WELCOME_DESC_CTA": "N/A",
 
   "WEBSITE_ENABLE": true,
-  "WEBSITE_URL": "https://modrealms.net",
+  "WEBSITE_URL": "https://mysticalmachines.net",
   "TWITTER_ENABLE": true,
   "TWITTER_URL": "https://twitter.com/modrealms",
   "INSTAGRAM_ENABLE": false,
