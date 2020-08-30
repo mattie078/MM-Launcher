@@ -1,4 +1,4 @@
-<p align="center"><img src="./app/assets/images/SealCircle.png" width="150px" height="150px" alt="mysticalmachines logo"></p>
+<p align="center"><img src="https://mysticalmachines.com/wp-content/uploads/2020/01/mysticalmachines-logo.png" height="150px" alt="mysticalmachines logo"></p>
 
 <h1 align="center">Mystical Machines Launcher</h1>
 
@@ -53,7 +53,7 @@ If you want to export the console output, simply right click anywhere on the con
 
 For help regarding this version (Mystical Machines' fork), contact the staff on the discord server below:
 
-[![discord](https://discordapp.com/api/guilds/210739122577473536/embed.png?style=banner2)][discord]
+[![discord](https://discordapp.com/api/guilds/676145339543060519/embed.png?style=banner2)][discord]
 
 
 ## Original Authors
@@ -64,9 +64,10 @@ This project is forked from HeliosLauncher, a project by dscalzi for the server 
 * [Original Project Wiki][wiki]
 * [Aventium Softworks Discord][discord2]
 
-[discord]: https://discord.gg/tKKeTdc 'Mystical Machines Discord'
-[discord2]: https://discord.gg/zNWUXdt 'Original Project Discord'
+[discord]: https://discord.mysticalmachines.com 'Mystical Machines Discord'
+[discord]: https://discord.gg/zNWUXdt 'Original Project Discord'
 [original]: https://github.com/dscalzi/HeliosLauncher 'Original Project GitHub'
+[fork]: https://github.com/ModRealms-Network/ModRealmsLauncher 'Forked Project from Modrealms'
 ```console
 > git clone https://github.com/dscalzi/HeliosLauncher.git
 > cd HeliosLauncher
