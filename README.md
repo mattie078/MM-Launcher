@@ -1,20 +1,20 @@
-<p align="center"><img src="./app/assets/images/SealCircle.png" width="150px" height="150px" alt="modrealms logo"></p>
+<p align="center"><img src="https://mysticalmachines.com/wp-content/uploads/2020/01/mysticalmachines-logo.png" height="150px" alt="mysticalmachines logo"></p>
 
-<h1 align="center">ModRealms Launcher</h1>
+<h1 align="center">Mystical Machines Launcher</h1>
 
 <em><h5 align="center"><a href="https://github.com/dscalzi/HeliosLauncher">Modified from HeliosLauncher</a></h5></em>
 
 <!-- [<p align="center"><img src="https://img.shields.io/travis/dscalzi/HeliosLauncher.svg?style=for-the-badge" alt="travis">](https://travis-ci.org/dscalzi/HeliosLauncher) [<img src="https://img.shields.io/github/downloads/dscalzi/HeliosLauncher/total.svg?style=for-the-badge" alt="downloads">](https://github.com/dscalzi/HeliosLauncher/releases) <img src="https://forthebadge.com/images/badges/winter-is-coming.svg"  height="28px" alt="stark"></p> -->
 
-<p align="center">Join ModRealms' servers easily and keep up to date with our packs and fixes!</p>
+<p align="center">Join Mystical Machines' servers easily and keep up to date with our packs and fixes!</p>
 
 ## Downloads
 
 You can download from [GitHub Releases](https://github.com/dscalzi/HeliosLauncher/releases)
 
-## Development (ModRealms fork)
+## Development (Mystical Machines fork)
 
-All ModRealms-specific changes (UI, assets, default configuration, etc..) will be in the master branch.
+All Mystical Machines-specific changes (UI, assets, default configuration, etc..) will be in the master branch.
 
 A development branch __mr-features__ will be used to work on new additions to the core mechanics of the original project (as below) and will keep up to date with the original project. We may submit features from this branch as a PR to the original project.
 
@@ -25,7 +25,7 @@ Coming Soon!
 
 **Supported Platforms**
 
-If you download from the [Releases](https://github.com/ModRealms-Network/HeliosLauncher/releases) tab, select the installer for your system.
+If you download from the [Releases](https://github.com/Mystical Machines-Network/HeliosLauncher/releases) tab, select the installer for your system.
 
 | Platform | File |
 | -------- | ---- |
@@ -51,9 +51,9 @@ If you want to export the console output, simply right click anywhere on the con
 
 ## Help
 
-For help regarding this version (ModRealms' fork), contact the staff on the discord server below:
+For help regarding this version (Mystical Machines' fork), contact the staff on the discord server below:
 
-[![discord](https://discordapp.com/api/guilds/210739122577473536/embed.png?style=banner2)][discord]
+[![discord](https://discordapp.com/api/guilds/676145339543060519/embed.png?style=banner2)][discord]
 
 
 ## Original Authors
@@ -64,9 +64,10 @@ This project is forked from HeliosLauncher, a project by dscalzi for the server 
 * [Original Project Wiki][wiki]
 * [Aventium Softworks Discord][discord2]
 
-[discord]: https://discord.gg/tKKeTdc 'ModRealms Discord'
-[discord2]: https://discord.gg/zNWUXdt 'Original Project Discord'
+[discord]: https://discord.mysticalmachines.com 'Mystical Machines Discord'
+[discord]: https://discord.gg/zNWUXdt 'Original Project Discord'
 [original]: https://github.com/dscalzi/HeliosLauncher 'Original Project GitHub'
+[fork]: https://github.com/ModRealms-Network/ModRealmsLauncher 'Forked Project from Modrealms'
 ```console
 > git clone https://github.com/dscalzi/HeliosLauncher.git
 > cd HeliosLauncher

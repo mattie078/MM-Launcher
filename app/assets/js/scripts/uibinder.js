@@ -133,7 +133,7 @@ function showFatalStartupError(){
                 'Discord Invite Link'
             )
             setOverlayHandler(() => {
-                shell.openExternal('https://github.com/ModRealms-Network/HeliosLauncher/releases')
+                shell.openExternal('https://github.com/Mystical Machines/HeliosLauncher/releases')
             })
             setDismissHandler(() => {
                 shell.openExternal('https://discord.gg/tKKeTdc')
