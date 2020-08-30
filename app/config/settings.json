@@ -8,12 +8,12 @@
   "WEBSITE_ENABLE": true,
   "WEBSITE_URL": "https://mysticalmachines.net",
   "TWITTER_ENABLE": true,
-  "TWITTER_URL": "https://twitter.com/modrealms",
+  "TWITTER_URL": "https://twitter.com/mm_machines",
   "INSTAGRAM_ENABLE": false,
   "INSTAGRAM_URL": "#",
-  "YOUTUBE_ENABLE": true,
-  "YOUTUBE_URL": "https://www.youtube.com/channel/UCx_iGrTo1z_ZuOf2w_Lfl1Q",
+  "YOUTUBE_ENABLE": false,
+  "YOUTUBE_URL": "#",
   "DISCORD_ENABLE": true,
-  "DISCORD_URL": "https://discord.gg/modrealms"
+  "DISCORD_URL": "https://discord.mysticalmachines.com"
 
 }

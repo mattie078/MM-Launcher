@@ -1,13 +1,13 @@
 {
-  "name": "modrealmslauncher",
+  "name": "mysticallauncher",
   "version": "2.0.0-release",
-  "productName": "ModRealms Launcher",
+  "productName": "Mystical Machines Launcher",
   "description": "Modded Minecraft Launcher",
-  "author": "Rob Weddell and Ally Mitchell (original by Daniel Scalzi)",
+  "author": "Brend Smits (original by Daniel Scalzi)",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/ModRealms-Network/HeliosLauncher",
+  "homepage": "https://github.com/Mystical-Machines/MM-Launcher",
   "bugs": {
-    "url": "https://github.com/ModRealms-Network/HeliosLauncher/issues"
+    "url": "https://github.com/Mystical-Machines/MM-Launcher/issues"
   },
   "private": true,
   "main": "index.js",
@@ -49,6 +49,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ModRealms-Network/ModRealmsLauncher.git"
+    "url": "git+https://github.com/Mystical-Machines/MM-Launcher.git"
   }
 }
