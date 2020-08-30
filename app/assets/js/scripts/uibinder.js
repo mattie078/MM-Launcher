@@ -133,10 +133,10 @@ function showFatalStartupError(){
                 'Discord Invite Link'
             )
             setOverlayHandler(() => {
-                shell.openExternal('https://github.com/Mystical Machines/HeliosLauncher/releases')
+                shell.openExternal('https://github.com/Mystical-Machines/mm-launcher/releases')
             })
             setDismissHandler(() => {
-                shell.openExternal('https://discord.gg/tKKeTdc')
+                shell.openExternal('https://discord.mysticalmachines.com')
             })
             toggleOverlay(true, true)
         })
