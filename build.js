@@ -20,7 +20,7 @@ builder.build({
     config: {
         appId: 'mysticallauncher',
         productName: 'Mystical Machines Launcher',
-        artifactName: '$mystical-machines.${ext}',
+        artifactName: '$mystical-machines-${version}.${ext}',
         copyright: 'Copyright © 2018-2020 Daniel Scalzi',
         directories: {
             buildResources: 'build',
