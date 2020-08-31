@@ -16,22 +16,23 @@ You can download from [GitHub Releases](https://github.com/dscalzi/HeliosLaunche
 
 All Mystical Machines-specific changes (UI, assets, default configuration, etc..) will be in the master branch.
 
-A development branch __mr-features__ will be used to work on new additions to the core mechanics of the original project (as below) and will keep up to date with the original project. We may submit features from this branch as a PR to the original project.
-
+A development branch **mr-features** will be used to work on new additions to the core mechanics of the original project (as below) and will keep up to date with the original project. We may submit features from this branch as a PR to the original project.
 
 #### Latest Release
+
 Coming Soon!
+
 <!-- [![](https://img.shields.io/github/release/dscalzi/HeliosLauncher.svg?style=flat-square)](https://github.com/dscalzi/HeliosLauncher/releases/latest) -->
 
 **Supported Platforms**
 
 If you download from the [Releases](https://github.com/Mystical Machines-Network/HeliosLauncher/releases) tab, select the installer for your system.
 
-| Platform | File |
-| -------- | ---- |
-| Windows x64 | `helioslauncher-setup-VERSION.exe` |
-| macOS | `helioslauncher-VERSION.dmg` |
-| Linux x64 | `helioslauncher-VERSION-x86_64.AppImage` |
+| Platform    | File                                     |
+| ----------- | ---------------------------------------- |
+| Windows x64 | `helioslauncher-setup-VERSION.exe`       |
+| macOS       | `helioslauncher-VERSION.dmg`             |
+| Linux x64   | `helioslauncher-VERSION-x86_64.AppImage` |
 
 ## Console
 
@@ -55,19 +56,19 @@ For help regarding this version (Mystical Machines' fork), contact the staff on 
 
 [![discord](https://discordapp.com/api/guilds/676145339543060519/embed.png?style=banner2)][discord]
 
-
 ## Original Authors
 
 This project is forked from HeliosLauncher, a project by dscalzi for the server WesterosCraft. Please visit and support their project at the links below!
 
-* [Project Link][original]
-* [Original Project Wiki][wiki]
-* [Aventium Softworks Discord][discord2]
+- [Project Link][original]
+- [Original Project Wiki][wiki]
+- [Aventium Softworks Discord][discord2]
 
-[discord]: https://discord.mysticalmachines.com 'Mystical Machines Discord'
-[discord]: https://discord.gg/zNWUXdt 'Original Project Discord'
-[original]: https://github.com/dscalzi/HeliosLauncher 'Original Project GitHub'
-[fork]: https://github.com/ModRealms-Network/ModRealmsLauncher 'Forked Project from Modrealms'
+[discord]: https://discord.mysticalmachines.com "Mystical Machines Discord"
+[discord]: https://discord.gg/zNWUXdt "Original Project Discord"
+[original]: https://github.com/dscalzi/HeliosLauncher "Original Project GitHub"
+[fork]: https://github.com/ModRealms-Network/ModRealmsLauncher "Forked Project from Modrealms"
+
 ```console
 > git clone https://github.com/dscalzi/HeliosLauncher.git
 > cd HeliosLauncher
@@ -163,10 +164,10 @@ Note that you **cannot** open the DevTools window while using this debug configu
 
 You may use this software in your own project so long as the following conditions are met.
 
-* Credit is expressly given to the original authors (Daniel Scalzi).
-  * Include a link to the original source on the launcher's About page.
-  * Credit the authors and provide a link to the original source in any publications or download pages.
-* The source code remain **public** as a fork of this repository.
+- Credit is expressly given to the original authors (Daniel Scalzi).
+  - Include a link to the original source on the launcher's About page.
+  - Credit the authors and provide a link to the original source in any publications or download pages.
+- The source code remain **public** as a fork of this repository.
 
 We reserve the right to update these conditions at any time, please check back periodically.
 
@@ -174,9 +175,9 @@ We reserve the right to update these conditions at any time, please check back p
 
 ## Resources
 
-* [Wiki][wiki]
-* [Nebula (Create Distribution.json)][nebula]
-* [v2 Rewrite Branch (WIP)][v2branch]
+- [Wiki][wiki]
+- [Nebula (Create Distribution.json)][nebula]
+- [v2 Rewrite Branch (WIP)][v2branch]
 
 The best way to contact the developers is on Discord.
 
@@ -186,11 +187,10 @@ The best way to contact the developers is on Discord.
 
 ### See you ingame.
 
-
-[nodejs]: https://nodejs.org/en/ 'Node.js'
-[vscode]: https://code.visualstudio.com/ 'Visual Studio Code'
-[mainprocess]: https://electronjs.org/docs/tutorial/application-architecture#main-and-renderer-processes 'Main Process'
-[rendererprocess]: https://electronjs.org/docs/tutorial/application-architecture#main-and-renderer-processes 'Renderer Process'
-[chromedebugger]: https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome 'Debugger for Chrome'
-[discord]: https://discord.gg/zNWUXdt 'Discord'
-[wiki]: https://github.com/dscalzi/HeliosLauncher/wiki 'wiki'
+[nodejs]: https://nodejs.org/en/ "Node.js"
+[vscode]: https://code.visualstudio.com/ "Visual Studio Code"
+[mainprocess]: https://electronjs.org/docs/tutorial/application-architecture#main-and-renderer-processes "Main Process"
+[rendererprocess]: https://electronjs.org/docs/tutorial/application-architecture#main-and-renderer-processes "Renderer Process"
+[chromedebugger]: https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome "Debugger for Chrome"
+[discord]: https://discord.gg/zNWUXdt "Discord"
+[wiki]: https://github.com/dscalzi/HeliosLauncher/wiki "wiki"
