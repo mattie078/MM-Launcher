@@ -51,9 +51,13 @@ exports.clearState = function(){
 }
 
 exports.updateDetails = function(details){
+	if (activity != undefined) {
     activity.details = details
     client.setActivity(activity)
     logger.log('Updated discord details to: ' + details)
+	} else { 
+		logger.error('Discord Activity is not defined')
+	}
 }
 
 exports.clearDetails = function(){
