@@ -1,4 +1,3 @@
-const { app } = require("electron");
 const AdmZip = require("adm-zip");
 const child_process = require("child_process");
 const crypto = require("crypto");
@@ -99,7 +98,7 @@ class ProcessBuilder {
     child.stderr.on("data", (data) => {
       loggerMCstderr.log(data);
     });
-    child.on("close", (code, signal) => {
+    child.on("close", (code) => {
       logger.log("Exited with code", code);
       fs.remove(tempNativePath, (err) => {
         if (err) {
