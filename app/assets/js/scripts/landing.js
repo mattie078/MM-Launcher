@@ -886,7 +886,6 @@ const newsContent                   = document.getElementById('newsContent')
 const newsArticleTitle              = document.getElementById('newsArticleTitle')
 const newsArticleDate               = document.getElementById('newsArticleDate')
 const newsArticleAuthor             = document.getElementById('newsArticleAuthor')
-// const newsArticleComments           = document.getElementById('newsArticleComments')
 const newsNavigationStatus          = document.getElementById('newsNavigationStatus')
 const newsArticleContentScrollable  = document.getElementById('newsArticleContentScrollable')
 const nELoadSpan                    = document.getElementById('nELoadSpan')
@@ -918,8 +917,6 @@ function slide_(up){
         lCLRight.style.top = '-200vh'
         newsBtn.style.top = '130vh'
         newsContainer.style.top = '0px'
-        //date.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
-        //landingContainer.style.background = 'rgba(29, 29, 29, 0.55)'
         landingContainer.style.background = 'rgba(0, 0, 0, 0.50)'
         setTimeout(() => {
             if(newsGlideCount === 1){
@@ -947,36 +944,31 @@ function slide_(up){
 // Bind news button.
 document.getElementById('newsButton').onclick = () => {
     // Toggle tabbing.
-    if(document.getElementById('newsButton').hasAttribute('selected')){
-        document.getElementById('newsButton').removeAttribute('selected')
-    } else {
-        document.getElementById('newsButton').setAttribute('selected', '')
-    }
     if(newsActive){
         $('#landingContainer *').removeAttr('tabindex')
-        $('#newsContainer *').attr('tabindex', '-1')
-        if(hasRPC){
-            if(ConfigManager.getSelectedServer()){
-                const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
-                DiscordWrapper.updateDetails('Ready to Play!')
-                DiscordWrapper.updateState('Server: ' + serv.getName())
-            } else {
-                DiscordWrapper.updateDetails('Landing Screen...')
-            }
-        }
+				$('#newsContainer *').attr('tabindex', '-1')
+				if(hasRPC) {
+					if(ConfigManager.getSelectedServer()) {
+						const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer());
+						DiscordWrapper.updateDetails('Ready to Play!');
+						DiscordWrapper.updateState('Server: ' + serv.getName());
+					} else {
+						DiscordWrapper.updateDetails('Loading Screen...');
+					}
+				}
     } else {
         $('#landingContainer *').attr('tabindex', '-1')
         $('#newsContainer, #newsContainer *, #lower, #lower #center *').removeAttr('tabindex')
         if(newsAlertShown){
-            $('#newsButtonAlert').fadeOut(2000)
-            newsAlertShown = false
-            ConfigManager.setNewsCacheDismissed(true)
-            ConfigManager.save()
-        }
-        if(hasRPC){
-            DiscordWrapper.updateDetails('Reading the News...')
-            DiscordWrapper.clearState()
-        }
+            $('#newsButtonAlert').fadeOut(2000);
+            newsAlertShown = false;
+            ConfigManager.setNewsCacheDismissed(true);
+            ConfigManager.save();
+				}
+				if(hasRPC) {
+					DiscordWrapper.updateDetails('Read the News...');
+					DiscordWrapper.clearState();
+				}
     }
     slide_(!newsActive)
     newsActive = !newsActive
@@ -1005,7 +997,7 @@ function setNewsLoading(val){
                 dotStr += '.'
             }
             nELoadSpan.innerHTML = nLStr + dotStr
-        }, 5)
+        }, 750)
     } else {
         if(newsLoadingListener != null){
             clearInterval(newsLoadingListener)
@@ -1176,11 +1168,6 @@ document.addEventListener('keydown', (e) => {
         if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
             document.getElementById(e.key === 'ArrowRight' ? 'newsNavigateRight' : 'newsNavigateLeft').click()
         }
-        // Interferes with scrolling an article using the down arrow.
-        // Not sure of a straight forward solution at this point.
-        // if(e.key === 'ArrowDown'){
-        //     document.getElementById('newsButton').click()
-        // }
     } else {
         if(getCurrentView() === VIEWS.landing){
             if(e.key === 'ArrowUp'){
@@ -1201,16 +1188,7 @@ function displayArticle(articleObject, index){
     newsArticleTitle.href = articleObject.link
     newsArticleAuthor.innerHTML = 'by ' + articleObject.author
     newsArticleDate.innerHTML = articleObject.date
-    // newsArticleComments.innerHTML = articleObject.comments
-    // newsArticleComments.href = articleObject.commentsLink
-
-    let md = new Remarkable('full', {
-        html: true
-    })
-
-    let content = md.render(articleObject.content.toString().replace(/\n/g, '<br>'))
-
-    newsArticleContentScrollable.innerHTML = '<div id="newsArticleContentWrapper"><div class="newsArticleSpacerTop"></div>' + content + '<div class="newsArticleSpacerBot"></div></div>'
+    newsArticleContentScrollable.innerHTML = '<div id="newsArticleContentWrapper"><div class="newsArticleSpacerTop"></div>' + articleObject.content + '<div class="newsArticleSpacerBot"></div></div>'
     Array.from(newsArticleContentScrollable.getElementsByClassName('bbCodeSpoilerButton')).forEach(v => {
         v.onclick = () => {
             const text = v.parentElement.getElementsByClassName('bbCodeSpoilerText')[0]
@@ -1243,12 +1221,8 @@ function loadNews(){
                     // Resolve date.
                     const date = new Date(el.find('pubDate').text()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
 
-                    // Resolve comments.
-                    // let comments = el.find('slash\\:comments').text() || '0'
-                    // comments = comments + ' Comment' + (comments === '1' ? '' : 's')
-
                     // Fix relative links in content.
-                    let content = el.find('description').text()
+                    let content = el.find('content\\:encoded').text()
                     let regex = /src="(?!http:\/\/|https:\/\/)(.+?)"/g
                     let matches
                     while((matches = regex.exec(content))){
@@ -1267,8 +1241,7 @@ function loadNews(){
                             date,
                             author,
                             content,
-                            // comments,
-                            // commentsLink: link + '#comments'
+                            commentsLink: link + '#comments'
                         }
                     )
                 }
@@ -1277,15 +1250,10 @@ function loadNews(){
                 })
             },
             timeout: 2500
-        }
-        ).catch(err => {
+        }).catch(err => {
             resolve({
                 articles: null
             })
         })
     })
-}
-
-function parseContent(){
-
 }
