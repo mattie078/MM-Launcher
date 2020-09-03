@@ -90,60 +90,6 @@ function setLaunchEnabled(val) {
   document.getElementById("launch_button").disabled = !val;
 }
 
-function runMongoDBTask(task) {
-  const url = "mongodb://modrealms.net:27017/launcher";
-  mongo.MongoClient.connect(
-    url,
-    {
-      auth: {
-        password: "modrealmslauncher",
-        username: "modrealmslauncher",
-      },
-      useUnifiedTopology: true,
-    },
-    task
-  );
-}
-
-function addMetric(type, pack = null) {
-  let update;
-  let query;
-  query = {
-    type: type,
-  };
-  if (pack) {
-    let field = "packs." + pack;
-    update = {
-      $inc: {
-        [field]: 1,
-      },
-      $set: {
-        lastdate: new Date().toLocaleString(),
-      },
-    };
-  } else {
-    update = {
-      $inc: {
-        amount: 1,
-      },
-      $set: {
-        lastdate: new Date().toLocaleString(),
-      },
-    };
-  }
-  runMongoDBTask(function (err, client) {
-    if (err) loggerMetrics.log("Error while connecting to MongoDB " + err);
-    client
-      .db("launcher")
-      .collection("metrics")
-      .updateOne(query, update, function (err, res) {
-        if (err) loggerMetrics.log("Error while updating metrics! " + err);
-        else loggerMetrics.log("Updated metrics for type: " + type);
-        client.close();
-      });
-  });
-}
-
 // Bind launch button
 document
   .getElementById("launch_button")
