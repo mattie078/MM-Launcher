@@ -510,7 +510,6 @@ function asyncSystemScan(mcVersion, launchAfter = true) {
           }
 
           setLaunchDetails("Java Installed!");
-          addMetric("javainstalls");
 
           if (launchAfter) {
             dlAsync();
@@ -685,10 +684,6 @@ function dlAsync(login = true) {
       switch (m.data) {
         case "download":
           loggerLaunchSuite.error("Error while downloading:", m.error);
-          addMetric(
-            "serverfailedinstalls",
-            ConfigManager.getSelectedServer().split("-")[0]
-          );
           if (m.error.code === "ENOENT") {
             showLaunchFailure(
               "Download Error",
@@ -739,7 +734,6 @@ function dlAsync(login = true) {
           remote.app.getVersion()
         );
         setLaunchDetails("Launching game..");
-        addMetric("packplays", ConfigManager.getSelectedServer().split("-")[0]);
         const SERVER_JOINED_REGEX = new RegExp(
           `\\[.+\\]: \\[CHAT\\] ${authUser.displayName} has joined!`
         );
@@ -778,11 +772,7 @@ function dlAsync(login = true) {
         const gameStateChange = function (data) {
           data = data.trim();
           if (SERVER_JOINED_REGEX.test(data)) {
-            addMetric(
-              "serversuccessfullogins",
-              ConfigManager.getSelectedServer().split("-")[0]
-            );
-            DiscordWrapper.updateDetails("Exploring the Realm!");
+            DiscordWrapper.updateDetails("Exploring Mystical Machines");
             DiscordWrapper.resetTime();
           }
         };
