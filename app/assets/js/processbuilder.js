@@ -371,7 +371,7 @@ class ProcessBuilder {
 
     // Java Arguments
     if (process.platform === "darwin") {
-      args.push("-Xdock:name=modrealmslauncher");
+      args.push("-Xdock:name=mysticallauncher");
       args.push(
         "-Xdock:icon=" + path.join(__dirname, "..", "images", "minecraft.icns")
       );
@@ -410,7 +410,7 @@ class ProcessBuilder {
 
     // Java Arguments
     if (process.platform === "darwin") {
-      args.push("-Xdock:name=modrealmslauncher");
+      args.push("-Xdock:name=mysticallauncher");
       args.push(
         "-Xdock:icon=" + path.join(__dirname, "..", "images", "minecraft.icns")
       );
@@ -517,7 +517,7 @@ class ProcessBuilder {
             case "launcher_name":
               val = args[i].replace(
                 argDiscovery,
-                "modrealmslauncher".replace(" ", "-")
+                "mysticallauncher".replace(" ", "-")
               );
               break;
             case "launcher_version":

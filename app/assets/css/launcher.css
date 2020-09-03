@@ -871,19 +871,6 @@ button {
   transform: rotate(45deg);
 }
 
-/*
-#login_filter {
-    height: calc(100% - 22px);
-    width: 100%;
-    z-index: 9000;
-    position: absolute;
-    filter: blur(8px) contrast(0.9) brightness(1.0);
-    background: url('./../images/backgrounds/0.jpg') no-repeat center center fixed;
-    transform: scale(1.2);
-    background-size: cover;
-}
-*/
-
 /*******************************************************************************
  *                                                                             *
  * Settings View (sttings.ejs)                                                 *

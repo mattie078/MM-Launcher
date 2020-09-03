@@ -3,12 +3,11 @@
  */
 
 // Requirements
-const cp = require("child_process");
-const crypto = require("crypto");
-const { URL } = require("url");
-const { Remarkable } = require("remarkable");
-const fs = require("fs-extra");
-const mongo = require("mongodb");
+const cp                      = require('child_process')
+const crypto                  = require('crypto')
+const {URL}                   = require('url')
+const {Remarkable}            = require('remarkable')
+const fs                      = require('fs-extra')
 
 // Internal Requirements
 const DiscordWrapper = require("./assets/js/discordwrapper");
@@ -27,19 +26,9 @@ const server_selection_button = document.getElementById(
 );
 const user_text = document.getElementById("user_text");
 
-const loggerLanding = LoggerUtil(
-  "%c[Landing]",
-  "color: #000668; font-weight: bold"
-);
-const loggerAEx = LoggerUtil("%c[AEx]", "color: #353232; font-weight: bold");
-const loggerLaunchSuite = LoggerUtil(
-  "%c[LaunchSuite]",
-  "color: #000668; font-weight: bold"
-);
-const loggerMetrics = LoggerUtil(
-  "%c[ModRealms Metrics]",
-  "color: #7289da; font-weight: bold"
-);
+const loggerLanding = LoggerUtil('%c[Landing]', 'color: #000668; font-weight: bold')
+const loggerAEx = LoggerUtil('%c[AEx]', 'color: #353232; font-weight: bold')
+const loggerLaunchSuite = LoggerUtil('%c[LaunchSuite]', 'color: #000668; font-weight: bold')
 
 /* Launch Progress Wrapper Functions */
 
@@ -99,60 +88,6 @@ function setDownloadPercentage(value, max, percent = (value / max) * 100) {
  */
 function setLaunchEnabled(val) {
   document.getElementById("launch_button").disabled = !val;
-}
-
-function runMongoDBTask(task) {
-  const url = "mongodb://modrealms.net:27017/launcher";
-  mongo.MongoClient.connect(
-    url,
-    {
-      auth: {
-        password: "modrealmslauncher",
-        username: "modrealmslauncher",
-      },
-      useUnifiedTopology: true,
-    },
-    task
-  );
-}
-
-function addMetric(type, pack = null) {
-  let update;
-  let query;
-  query = {
-    type: type,
-  };
-  if (pack) {
-    let field = "packs." + pack;
-    update = {
-      $inc: {
-        [field]: 1,
-      },
-      $set: {
-        lastdate: new Date().toLocaleString(),
-      },
-    };
-  } else {
-    update = {
-      $inc: {
-        amount: 1,
-      },
-      $set: {
-        lastdate: new Date().toLocaleString(),
-      },
-    };
-  }
-  runMongoDBTask(function (err, client) {
-    if (err) loggerMetrics.log("Error while connecting to MongoDB " + err);
-    client
-      .db("launcher")
-      .collection("metrics")
-      .updateOne(query, update, function (err, res) {
-        if (err) loggerMetrics.log("Error while updating metrics! " + err);
-        else loggerMetrics.log("Updated metrics for type: " + type);
-        client.close();
-      });
-  });
 }
 
 // Bind launch button
@@ -453,7 +388,7 @@ function asyncSystemScan(mcVersion, launchAfter = true) {
         // Show this information to the user.
         setOverlayContent(
           "No Compatible<br>Java Installation Found",
-          'In order to join ModRealms, you need a 64-bit installation of Java 8. Would you like us to install a copy? By installing, you accept <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">Oracle\'s license agreement</a>.',
+          'In order to join Mystical Machines, you need a 64-bit installation of Java 8. Would you like us to install a copy? By installing, you accept <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">Oracle\'s license agreement</a>.',
           "Install Java",
           "Install Manually"
         );
@@ -575,7 +510,6 @@ function asyncSystemScan(mcVersion, launchAfter = true) {
           }
 
           setLaunchDetails("Java Installed!");
-          addMetric("javainstalls");
 
           if (launchAfter) {
             dlAsync();
@@ -750,10 +684,6 @@ function dlAsync(login = true) {
       switch (m.data) {
         case "download":
           loggerLaunchSuite.error("Error while downloading:", m.error);
-          addMetric(
-            "serverfailedinstalls",
-            ConfigManager.getSelectedServer().split("-")[0]
-          );
           if (m.error.code === "ENOENT") {
             showLaunchFailure(
               "Download Error",
@@ -804,7 +734,6 @@ function dlAsync(login = true) {
           remote.app.getVersion()
         );
         setLaunchDetails("Launching game..");
-        addMetric("packplays", ConfigManager.getSelectedServer().split("-")[0]);
         const SERVER_JOINED_REGEX = new RegExp(
           `\\[.+\\]: \\[CHAT\\] ${authUser.displayName} has joined!`
         );
@@ -843,11 +772,7 @@ function dlAsync(login = true) {
         const gameStateChange = function (data) {
           data = data.trim();
           if (SERVER_JOINED_REGEX.test(data)) {
-            addMetric(
-              "serversuccessfullogins",
-              ConfigManager.getSelectedServer().split("-")[0]
-            );
-            DiscordWrapper.updateDetails("Exploring the Realm!");
+            DiscordWrapper.updateDetails("Exploring Mystical Machines");
             DiscordWrapper.resetTime();
           }
         };

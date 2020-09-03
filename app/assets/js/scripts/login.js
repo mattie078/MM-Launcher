@@ -338,7 +338,6 @@ loginButton.addEventListener("click", () => {
             Lang.queryJS("login.login")
           );
           formDisabled(false);
-          addMetric("successfullogins");
         });
       }, 1000);
     })
@@ -352,6 +351,5 @@ loginButton.addEventListener("click", () => {
       });
       toggleOverlay(true);
       loggerLogin.log("Error while logging in.", err);
-      addMetric("failedlogins");
     });
 });

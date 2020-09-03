@@ -1,6 +1,6 @@
 {
   "name": "mysticallauncher",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "productName": "Mystical Machines Launcher",
   "description": "Modded Minecraft Launcher",
   "author": "Brend Smits (original by Daniel Scalzi)",
@@ -34,7 +34,6 @@
     "fs-extra": "^9.0.1",
     "github-syntax-dark": "^0.5.0",
     "jquery": "^3.5.1",
-    "mongodb": "^3.6.0",
     "remarkable": "^2.0.1",
     "request": "^2.88.2",
     "semver": "^7.3.2",
