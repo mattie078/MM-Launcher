@@ -593,7 +593,6 @@ exports.pullRemote = function () {
   if (DEV_MODE) {
     return exports.pullLocal();
   }
-  logger.log("DISTRIBUTION TIMEOUT = 15000");
   return new Promise((resolve, reject) => {
     const opts = {
       url: constants.DISTRIBUTION_URL,
