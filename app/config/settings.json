@@ -1,19 +1,18 @@
 {
-  "APP_DISPLAY_NAME": "ModRealms Launcher",
+  "APP_DISPLAY_NAME": "Mystical Machines Launcher",
 
-  "WELCOME_HEADER_TEXT": "Welcome to ModRealms!",
+  "WELCOME_HEADER_TEXT": "Welcome to Mystical Machines!",
   "WELCOME_DESC_TEXT": "N/A",
   "WELCOME_DESC_CTA": "N/A",
 
   "WEBSITE_ENABLE": true,
-  "WEBSITE_URL": "https://modrealms.net",
+  "WEBSITE_URL": "https://mysticalmachines.com",
   "TWITTER_ENABLE": true,
-  "TWITTER_URL": "https://twitter.com/modrealms",
+  "TWITTER_URL": "https://twitter.com/mm_machines",
   "INSTAGRAM_ENABLE": false,
   "INSTAGRAM_URL": "#",
-  "YOUTUBE_ENABLE": true,
-  "YOUTUBE_URL": "https://www.youtube.com/channel/UCx_iGrTo1z_ZuOf2w_Lfl1Q",
+  "YOUTUBE_ENABLE": false,
+  "YOUTUBE_URL": "#",
   "DISCORD_ENABLE": true,
-  "DISCORD_URL": "https://discord.gg/tKKeTdc"
-
+  "DISCORD_URL": "https://discord.mysticalmachines.com"
 }

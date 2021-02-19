@@ -1,5 +1,4 @@
-const APP_DATA_NAME = 'ModRealmsLauncher'
-const LIVE_DISTRIBUTION_URL = 'https://launcher.modrealms.net/deploy/distribution.json'
-const DEV_DISTRIBUTION_URL = 'https://launcher.modrealms.net/dev-deploy/distribution.json'
+const APP_DATA_NAME = "Mystical Machines";
+const DISTRIBUTION_URL = "http://launcher.mysticalmachines.com/distribution.json";
 
-module.exports = { APP_DATA_NAME, LIVE_DISTRIBUTION_URL, DEV_DISTRIBUTION_URL }
+module.exports = { APP_DATA_NAME, DISTRIBUTION_URL };
