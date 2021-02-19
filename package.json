@@ -1,13 +1,13 @@
 {
-  "name": "modrealmslauncher",
-  "version": "2.5.0-prerelease.1",
-  "productName": "ModRealms Launcher",
+  "name": "mysticallauncher",
+  "version": "0.9.6",
+  "productName": "Mystical Machines Launcher",
   "description": "Modded Minecraft Launcher",
-  "author": "ModRealms",
+  "author": "Brend Smits (original by Daniel Scalzi)",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/ModRealms-Network/HeliosLauncher",
+  "homepage": "https://github.com/Mystical-Machines/MM-Launcher",
   "bugs": {
-    "url": "https://github.com/ModRealms-Network/HeliosLauncher/issues"
+    "url": "https://github.com/Mystical-Machines/MM-Launcher/issues"
   },
   "private": true,
   "main": "index.js",
@@ -51,6 +51,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ModRealms-Network/ModRealmsLauncher.git"
+    "url": "git+https://github.com/Mystical-Machines/MM-Launcher.git"
   }
 }

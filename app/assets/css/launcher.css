@@ -276,8 +276,8 @@ body, button {
 #welcomeImageSeal {
     border-radius: 50px;
     background: rgba(1, 2, 1, 0.2);
-    height: 300px;
-    width: 300px;
+    height: 50%;
+    width: 50%;
     box-shadow: 0px 8px 20px -7px rgb(0, 0, 0);
     margin-bottom: 20px;
 }
