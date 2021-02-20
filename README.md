@@ -10,7 +10,7 @@
 
 ## Downloads
 
-You can download from [GitHub Releases](/releases)
+You can download from [GitHub Releases](https://github.com/Mystical-Machines/MM-Launcher/releases)
 
 ## Development (Mystical Machines fork)
 
@@ -26,7 +26,7 @@ Coming Soon!
 
 **Supported Platforms**
 
-If you download from the [Releases](/releases/latest) tab, select the installer for your system.
+If you download from the [Releases](https://github.com/Mystical-Machines/MM-Launcher/releases) tab, select the installer for your system.
 
 | Platform    | File                                     |
 | ----------- | ---------------------------------------- |
