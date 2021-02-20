@@ -313,7 +313,7 @@ const refreshServerStatus = async function(fade = false){
         if(servStat.online){
             pLabel = 'PLAYERS'
             pVal = servStat.onlinePlayers + '/' + servStat.maxPlayers
-            document.getElementById('mojang_status_icon').style.color = Mojang.statusToHex('green');
+            document.getElementById('server_status_icon').style.color = Mojang.statusToHex('green');
         }
 
     } catch (err) {
