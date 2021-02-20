@@ -28,7 +28,7 @@ exports.initRPC = function(genSettings, servSettings = null, initialDetails = 'W
             logger.log('Unable to initialize Discord Rich Presence, no client detected.')
         } else {
             logger.log('Unable to initialize Discord Rich Presence: ' + error.message, error)
-        }l
+        }
     })
 }
 

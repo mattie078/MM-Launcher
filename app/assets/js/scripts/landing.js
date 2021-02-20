@@ -13,9 +13,9 @@ const chokidar                = require('chokidar')
 // Internal Requirements
 const DiscordWrapper          = require('./assets/js/discordwrapper')
 const Mojang                  = require('./assets/js/mojang')
-const ModRealmsRest           = require('./assets/js/modrealms')
 const ProcessBuilder          = require('./assets/js/processbuilder')
 const ServerStatus            = require('./assets/js/serverstatus')
+const { Console } = require('console')
 
 // Launch Elements
 const launch_content          = document.getElementById('launch_content')
@@ -29,7 +29,6 @@ const user_text               = document.getElementById('user_text')
 const loggerLanding = LoggerUtil('%c[Landing]', 'color: #000668; font-weight: bold')
 const loggerAEx = LoggerUtil('%c[AEx]', 'color: #353232; font-weight: bold')
 const loggerLaunchSuite = LoggerUtil('%c[LaunchSuite]', 'color: #000668; font-weight: bold')
-const loggerMetrics = LoggerUtil('%c[ModRealms Metrics]', 'color: #7289da; font-weight: bold')
 
 /* Launch Progress Wrapper Functions */
 
@@ -161,7 +160,6 @@ document.getElementById('refreshMediaButton').onclick = (e) => {
     DistroManager.pullRemote().then((data) => {
         onDistroRefresh(data)
         showMainUI(data)
-        refreshModRealmsStatuses()
         setOverlayContent(
             'Launcher Refreshed!',
             'This is a confirmation letting you know that you have manually refreshed your launcher, your server list is now up to date and should be good to go! If you have any problems please do let us know!',
@@ -302,47 +300,6 @@ const refreshMojangStatuses = async function(){
     document.getElementById('mojang_status_icon').style.color = Mojang.statusToHex(status)
 }
 
-const refreshModRealmsStatuses = async function(){
-    loggerLanding.log('Refreshing ModRealms Statuses..')
-    let status = 'grey'
-    let tooltipServerHTML = ''
-    let greenCount = 0
-
-    // let modpacks = await ModRealmsRest.modpacks()
-    // let statuses = await ModRealmsRest.status()
-
-    ModRealmsRest.modpacks().then(modpacks => {
-        ModRealmsRest.status().then(statuses => {
-            if(modpacks.length !== 0){
-                for(let i=0; i<statuses.length; i++){
-                    const server = statuses[i]
-                    const players = server.isOffline() ? 'Restarting' : `${server.players}/${server.maxPlayers}`
-                    tooltipServerHTML += `<div class="modrealmsStatusContainer">
-                    <span class="modrealmsStatusIcon" style="color: ${Mojang.statusToHex(server.status)};">&#8226;</span>
-                    <span class="modrealmsStatusName">${server.name}</span>
-                    <span class="modrealmsStatusPlayers">${players}</span>
-                </div>`
-
-                    if(server.status.toLowerCase() === 'green') ++greenCount
-                }
-
-                if(greenCount === 0){
-                    status = 'red'
-                } else {
-                    status = 'green'
-                }
-            } else {
-                tooltipServerHTML = `<div class="modrealmsStatusContainer">
-                    <span class="modrealmsStatusName" style="text-align: center;">Sorry! There are no modpacks available!</span>
-                </div>`
-            }
-
-            document.getElementById('modrealmsStatusServerContainer').innerHTML = tooltipServerHTML
-            document.getElementById('modrealms_status_icon').style.color = Mojang.statusToHex(status)
-        })
-    })
-}
-
 const refreshServerStatus = async function(fade = false){
     loggerLanding.log('Refreshing Server Status')
     const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
@@ -356,6 +313,7 @@ const refreshServerStatus = async function(fade = false){
         if(servStat.online){
             pLabel = 'PLAYERS'
             pVal = servStat.onlinePlayers + '/' + servStat.maxPlayers
+            document.getElementById('mojang_status_icon').style.color = Mojang.statusToHex('green');
         }
 
     } catch (err) {
@@ -387,12 +345,10 @@ function loadDiscord(){
 }
 
 refreshMojangStatuses()
-refreshModRealmsStatuses()
 // Server Status is refreshed in uibinder.js on distributionIndexDone.
 
 // Set refresh rate to once every 5 minutes.
 let mojangStatusListener = setInterval(() => refreshMojangStatuses(true), 30000)
-let networkStatusListener = setInterval(() => refreshModRealmsStatuses(true), 30000)
 let serverStatusListener = setInterval(() => refreshServerStatus(true), 30000)
 
 /**
@@ -463,7 +419,7 @@ function asyncSystemScan(mcVersion, launchAfter = true){
                 // Show this information to the user.
                 setOverlayContent(
                     'No Compatible<br>Java Installation Found',
-                    'In order to join ModRealms, you need a 64-bit installation of Java 8. Would you like us to install a copy? By installing, you accept <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">Oracle\'s license agreement</a>.',
+                    'In order to join Mystical Machines, you need a 64-bit installation of Java 8. Would you like us to install a copy? By installing, you accept <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">Oracle\'s license agreement</a>.',
                     'Install Java',
                     'Install Manually'
                 )
@@ -783,7 +739,7 @@ function dlAsync(login = true){
                 loggerLaunchSuite.log(`Sending selected account (${authUser.displayName}) to ProcessBuilder.`)
                 let pb = new ProcessBuilder(serv, versionData, forgeData, authUser, remote.app.getVersion())
                 setLaunchDetails('Launching game..')
-                const SERVER_JOINED_REGEX = new RegExp(`\\[.+\\]: \\[CHAT\\] ${authUser.displayName} has joined!`)
+                const SERVER_JOINED_REGEX = new RegExp(`\\[\\CHAT] Welcome to Mystical Machines,`)
                 const SERVER_LEAVE_REGEX = new RegExp(`\\[.+\\]: \\[CHAT\\] ${authUser.displayName} has left!`)
 
                 const onLoadComplete = () => {
@@ -853,7 +809,7 @@ function dlAsync(login = true){
                     data = data.trim()
                     if(data.indexOf('Could not find or load main class net.minecraft.launchwrapper.Launch') > -1){
                         loggerLaunchSuite.error('Game launch failed, LaunchWrapper was not downloaded properly.')
-                        showLaunchFailure('Error During Launch', 'The main file, LaunchWrapper, failed to download properly. As a result, the game cannot launch.<br><br>To fix this issue, temporarily turn off your antivirus software and launch the game again.<br><br>If you have time, please <a href="https://github.com/ModRealms-Network/ModRealmsLauncher/issues">submit an issue</a> and let us know what antivirus software you use. We\'ll contact them and try to straighten things out.')
+                        showLaunchFailure('Error During Launch', 'The main file, LaunchWrapper, failed to download properly. As a result, the game cannot launch.<br><br>To fix this issue, temporarily turn off your antivirus software and launch the game again.<br><br>If you have time, please <a href="https://github.com/Mystical-Machines/MM-Launcher/issues">submit an issue</a> and let us know what antivirus software you use. We\'ll contact them and try to straighten things out.')
                         proc.kill(9)
                     }  else if(data.includes('net.minecraftforge.fml.relauncher.FMLSecurityManager$ExitTrappedException')){
                         loggerLaunchSuite.error('Game launch failed before the JVM could open the window!')
