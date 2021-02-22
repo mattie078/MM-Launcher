@@ -469,24 +469,27 @@ function processLogOut(val, isLastAccount, skip = false) {
         val,
         isLastAccount
     }
-    if (!skip) {
-        const parent = val.closest('.settingsAuthAccount')
-        const uuid = parent.getAttribute('uuid')
-        const account = ConfigManager.getAuthAccount(uuid)
-        if (account.type === 'microsoft') {
-            toggleOverlay(true, false, 'msOverlay')
-            ipcRenderer.send('openMSALogoutWindow', 'open')
-        }
+
+    const parent = val.closest('.settingsAuthAccount')
+    const uuid = parent.getAttribute('uuid')
+    const account = ConfigManager.getAuthAccount(uuid)
+    if (account.type === 'microsoft') {
+        toggleOverlay(true, false, 'msOverlay')
+        ipcRenderer.send('openMSALogoutWindow', 'open')
     }
+    
     const prevSelAcc = ConfigManager.getSelectedAccount()
-    AuthManager.removeAccount(uuid).then(() => {
-        if (!isLastAccount && uuid === prevSelAcc.uuid) {
-            const selAcc = ConfigManager.getSelectedAccount()
-            refreshAuthAccountSelected(selAcc.uuid)
-            updateSelectedAccount(selAcc)
-            validateSelectedAccount()
-        }
-    })
+    //Auth manager actually doesnt save the changes if its the last account. Derp
+    ConfigManager.removeAuthAccount(uuid)
+    ConfigManager.save()
+    
+    if (!isLastAccount && uuid === prevSelAcc.uuid) {
+        const selAcc = ConfigManager.getSelectedAccount()
+        refreshAuthAccountSelected(selAcc.uuid)
+        updateSelectedAccount(selAcc)
+        validateSelectedAccount()
+    }
+
     $(parent).fadeOut(150, () => {
         parent.remove()
     })

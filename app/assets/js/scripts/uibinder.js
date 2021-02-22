@@ -104,6 +104,11 @@ function showMainUI(data){
                         const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
                         DiscordWrapper.updateDetails('Ready to Play!')
                         DiscordWrapper.updateState('Server: ' + serv.getName())
+
+                        if(!ConfigManager.oneTimePopup()){
+                            showOneTimePopup()
+                        }
+
                     } else {
                         DiscordWrapper.updateDetails('Landing Screen...')
                     }
@@ -122,6 +127,10 @@ function showMainUI(data){
     initNews().then(() => {
         $('#newsContainer *').attr('tabindex', '-1')
     })
+}
+
+function showOneTimePopup(){
+    $("#popupContainer").fadeIn(1000);
 }
 
 function showFatalStartupError(){

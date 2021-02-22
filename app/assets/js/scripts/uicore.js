@@ -26,8 +26,8 @@ window.eval = global.eval = function () {
 
 // Display warning when devtools window is opened.
 remote.getCurrentWebContents().on('devtools-opened', () => {
-    console.log('%cIf you\'ve been told to paste something here, you\'re being scammed.', 'font-size: 5px')
-    console.log('%cUnless you know exactly what you\'re doing, close this window.', 'font-size: 5px')
+    console.log('%cIf you\'ve been told to paste something here, you\'re being scammed.', 'font-size: 25px')
+    console.log('%cUnless you know exactly what you\'re doing, close this window.', 'font-size: 25px')
 })
 
 // Disable zoom, needed for darwin.

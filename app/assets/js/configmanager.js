@@ -141,6 +141,7 @@ const DEFAULT_CONFIG = {
             resHeight: 720,
             fullscreen: false,
             autoConnect: true,
+            hasSeenPopup: false,
             launchDetached: true,
             consoleOnLaunch: false
         },
@@ -847,3 +848,18 @@ exports.updateMicrosoftAuth = (accessToken, expiresAt) => {
 
     return config.microsoftAuth
 }  
+
+/**
+ * Check if the user has seen the initial popup.
+ *
+ * @param {boolean} def Optional. If true, the default value will be returned.
+ * @returns {boolean} Whether or not the user has seen the popup.
+ */
+
+exports.oneTimePopup = function (def = false) {
+    return !def ? config.settings.game.hasSeenPopup : DEFAULT_CONFIG.settings.game.hasSeenPopup
+}
+
+exports.setHasSeenPopup = function (hasSeenPopup) {
+    config.settings.game.hasSeenPopup = hasSeenPopup
+}
