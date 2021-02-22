@@ -10,13 +10,13 @@
 
 ## Downloads
 
-You can download from [GitHub Releases](/releases)
+You can download from [GitHub Releases](https://github.com/Mystical-Machines/MM-Launcher/releases)
 
 ## Development (Mystical Machines fork)
 
 All Mystical Machines-specific changes (UI, assets, default configuration, etc..) will be in the master branch.
 
-A development branch **mr-features** will be used to work on new additions to the core mechanics of the original project (as below) and will keep up to date with the original project. We may submit features from this branch as a PR to the original project.
+A development branch **develop** will be used to work on new additions to the core mechanics of the original project (as below) and will keep up to date with the original project. We may submit features from this branch as a PR to the original project.
 
 #### Latest Release
 
@@ -26,7 +26,7 @@ Coming Soon!
 
 **Supported Platforms**
 
-If you download from the [Releases](/releases) tab, select the installer for your system.
+If you download from the [Releases](https://github.com/Mystical-Machines/MM-Launcher/releases) tab, select the installer for your system.
 
 | Platform    | File                                     |
 | ----------- | ---------------------------------------- |
