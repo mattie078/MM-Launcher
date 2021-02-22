@@ -50,7 +50,7 @@ builder
       },
       linux: {
         target: "AppImage",
-        maintainer: "Rubbertjuh",
+        maintainer: "Rubbertjuh & mattie078",
         vendor: "Mystical Machines",
         synopsis: "Modded Minecraft Launcher",
         description:
