@@ -997,6 +997,15 @@ document.getElementById('newsButton').onclick = () => {
     } else {
         document.getElementById('newsButton').setAttribute('selected', '')
     }
+
+    if(document.getElementById('newsButtonText').hasAttribute('alertShown')){
+        document.getElementById('newsButtonText').removeAttribute('alertShown')
+        $('#newsButtonAlert').fadeOut(1000)
+        newsAlertShown = false
+        ConfigManager.setNewsCacheDismissed(true)
+        ConfigManager.save()
+    }
+
     if(newsActive){
         $('#landingContainer *').removeAttr('tabindex')
         $('#newsContainer *').attr('tabindex', '-1')
@@ -1012,13 +1021,6 @@ document.getElementById('newsButton').onclick = () => {
     } else {
         $('#landingContainer *').attr('tabindex', '-1')
         $('#newsContainer, #newsContainer *, #lower, #lower #center *').removeAttr('tabindex')
-        if(newsAlertShown){
-            document.getElementById('newsButtonText').removeAttribute('alertShown')
-            $('#newsButtonAlert').fadeOut(1000)
-            newsAlertShown = false
-            ConfigManager.setNewsCacheDismissed(true)
-            ConfigManager.save()
-        }
         if(hasRPC){
             DiscordWrapper.updateDetails('Reading the News...')
             DiscordWrapper.clearState()
@@ -1112,7 +1114,6 @@ function showNewsAlert(){
  * content has finished loading and transitioning.
  */
 function initNews(){
-
     return new Promise((resolve, reject) => {
         setNewsLoading(true)
 
@@ -1159,7 +1160,6 @@ function initNews(){
                 if(cached.date != null && cached.content != null){
 
                     if(new Date(cached.date) >= newDate){
-
                         // Compare Content
                         if(cached.content !== newHash){
                             isNew = true
