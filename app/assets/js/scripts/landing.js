@@ -18,7 +18,7 @@ const ServerStatus            = require('./assets/js/serverstatus')
 const { Console } = require('console')
 
 // Launch Elements
-const launch_content          = document.getElementById('launch_content')
+const launch_content          = document.getElementById('mm_launch_content')
 const launch_details          = document.getElementById('launch_details')
 const launch_progress         = document.getElementById('launch_progress')
 const launch_progress_label   = document.getElementById('launch_progress_label')
@@ -228,7 +228,16 @@ function updateSelectedServer(serv){
     }
     setLaunchEnabled(serv != null)
     if(serv){
-        setLaunchButtonText(fs.pathExistsSync(path.join(ConfigManager.getDataDirectory(), 'instances', serv.getID())) ? 'PLAY' : 'INSTALL & PLAY')
+        if(fs.pathExistsSync(path.join(ConfigManager.getDataDirectory(), 'instances', serv.getID()))){
+            setLaunchButtonText('PLAY')
+            ConfigManager.setSelectedIsInstalled(true)
+            ConfigManager.save()
+        }
+        else{
+            setLaunchButtonText('INSTALL & PLAY')
+            ConfigManager.setSelectedIsInstalled(false)
+            ConfigManager.save()
+        }
     } else {
         setLaunchButtonText('PLAY')
     }
@@ -738,13 +747,17 @@ function dlAsync(login = true){
                 updateSelectedServer(DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer()))
                 const authUser = ConfigManager.getSelectedAccount()
                 loggerLaunchSuite.log(`Sending selected account (${authUser.displayName}) to ProcessBuilder.`)
+                ConfigManager.setRestoreToDefault(false)
+                ConfigManager.save()
+                loggerLaunchSuite.log(`Restoring to default has been automatically disabled.`)
                 let pb = new ProcessBuilder(serv, versionData, forgeData, authUser, remote.app.getVersion())
                 setLaunchDetails('Launching game..')
                 const SERVER_JOINED_REGEX = new RegExp(`\\[\\CHAT] Welcome to Mystical Machines,`)
                 const SERVER_LEAVE_REGEX = new RegExp(`\\[.+\\]: \\[CHAT\\] ${authUser.displayName} has left!`)
 
+                toggleLaunchArea(false)
+
                 const onLoadComplete = () => {
-                    toggleLaunchArea(false)
                     if(hasRPC){
                         DiscordWrapper.updateDetails('Launching game...')
                         DiscordWrapper.resetTime()

@@ -142,8 +142,10 @@ const DEFAULT_CONFIG = {
             fullscreen: false,
             autoConnect: true,
             hasSeenPopup: false,
+            restoreToDefault: false,
             launchDetached: true,
-            consoleOnLaunch: false
+            consoleOnLaunch: false,
+            selectedIsInstalled: false
         },
         launcher: {
             allowPrerelease: false,
@@ -862,4 +864,20 @@ exports.oneTimePopup = function (def = false) {
 
 exports.setHasSeenPopup = function (hasSeenPopup) {
     config.settings.game.hasSeenPopup = hasSeenPopup
+}
+
+exports.restoreToDefault = function (def = false) {
+    return !def ? config.settings.game.restoreToDefault : DEFAULT_CONFIG.settings.game.restoreToDefault
+}
+
+exports.setRestoreToDefault = function (restoreToDefault) {
+    config.settings.game.restoreToDefault = restoreToDefault
+}
+
+exports.selectedIsInstalled = function (def = false) {
+    return !def ? config.settings.game.selectedIsInstalled : DEFAULT_CONFIG.settings.game.selectedIsInstalled
+}
+
+exports.setSelectedIsInstalled = function (selectedIsInstalled) {
+    config.settings.game.selectedIsInstalled = selectedIsInstalled
 }

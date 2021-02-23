@@ -1511,18 +1511,20 @@ class AssetGuard extends EventEmitter {
         for(let ob of modules){
             let obArtifact = ob.getArtifact()
             let obPath = obArtifact.getPath()
-            let artifact = new DistroModule(ob.getIdentifier(), obArtifact.getHash(), obArtifact.getSize(), obArtifact.getURL(), obPath, ob.getType())
-            const validationPath = obPath.toLowerCase().endsWith('.pack.xz') ? obPath.substring(0, obPath.toLowerCase().lastIndexOf('.pack.xz')) : obPath
-            if(!AssetGuard._validateLocal(validationPath, 'MD5', artifact.hash)){
-                asize += artifact.size*1
-                alist.push(artifact)
-                if(validationPath !== obPath) this.extractQueue.push(obPath)
-            }
-            //Recursively process the submodules then combine the results.
-            if(ob.getSubModules() != null){
-                let dltrack = this._parseDistroModules(ob.getSubModules(), version, servid)
-                asize += dltrack.dlsize*1
-                alist = alist.concat(dltrack.dlqueue)
+            if(((!obPath.split(path.sep).includes('config')) || ConfigManager.restoreToDefault()) || !ConfigManager.selectedIsInstalled()){
+                let artifact = new DistroModule(ob.getIdentifier(), obArtifact.getHash(), obArtifact.getSize(), obArtifact.getURL(), obPath, ob.getType())
+                const validationPath = obPath.toLowerCase().endsWith('.pack.xz') ? obPath.substring(0, obPath.toLowerCase().lastIndexOf('.pack.xz')) : obPath
+                if(!AssetGuard._validateLocal(validationPath, 'MD5', artifact.hash)){
+                    asize += artifact.size*1
+                    alist.push(artifact)
+                    if(validationPath !== obPath) this.extractQueue.push(obPath)
+                }
+                //Recursively process the submodules then combine the results.
+                if(ob.getSubModules() != null){
+                    let dltrack = this._parseDistroModules(ob.getSubModules(), version, servid)
+                    asize += dltrack.dlsize*1
+                    alist = alist.concat(dltrack.dlqueue)
+                }
             }
         }
 
