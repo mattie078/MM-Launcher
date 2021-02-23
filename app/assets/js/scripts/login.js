@@ -303,6 +303,9 @@ loginButton.addEventListener('click', () => {
                             DiscordWrapper.updateDetails('Landing Screen...')
                         }
                     }
+                    if(!ConfigManager.oneTimePopup()){
+                        showOneTimePopup()
+                    }
                 }
                 loginViewOnSuccess = VIEWS.landing // Reset this for good measure.
                 loginCancelEnabled(false) // Reset this for good measure.
